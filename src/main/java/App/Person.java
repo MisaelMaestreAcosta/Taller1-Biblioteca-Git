@@ -1,19 +1,15 @@
-
 package App;
 
-
 public class Person {
+
     private String id;
     private String name;
-    private String email;
+    private String phone;
 
-    public Person() {
-    }
-
-    public Person(String id, String name, String email) {
+    public Person(String id, String name, String phone) {
         this.id = id;
         this.name = name;
-        this.email = email;
+        this.phone = phone;
     }
 
     public String getId() {
@@ -32,18 +28,17 @@ public class Person {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public String toString() {
-        return "Person{" + "id=" + id + ", name=" + name + ", email=" + email + '}';
+        return "Person{id=" + id + ", name=" + name + ", phone=" + phone + "}";
+
     }
-    
-    
 }
