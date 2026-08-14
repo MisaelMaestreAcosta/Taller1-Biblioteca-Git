@@ -77,4 +77,39 @@ public class Main {
         System.out.println("Client with ID " + id + " not found");
     }
 
+    public static void updateClient() {
+        System.out.print("Enter client ID to update: ");
+        String id = sc.nextLine();
+
+        for (Client client : clients) {
+            if (client.getId().equals(id)) {
+                System.out.println("Current data: " + client);
+
+                System.out.print("Enter new name (press Enter to keep current): ");
+                String name = sc.nextLine();
+                if (!name.isEmpty()) {
+                    client.setName(name);
+                }
+
+                System.out.print("Enter new phone (press Enter to keep current): ");
+                String phone = sc.nextLine();
+                if (!phone.isEmpty()) {
+                    client.setPhone(phone);
+                }
+
+                System.out.print("Enter new email (press Enter to keep current): ");
+                String email = sc.nextLine();
+                if (!email.isEmpty()) {
+                    client.setEmail(email);
+                }
+
+                System.out.println("Client updated successfully");
+                System.out.println("Updated data: " + client);
+                return;
+            }
+        }
+
+        System.out.println("Client with ID " + id + " not found");
+    }
+
 }
