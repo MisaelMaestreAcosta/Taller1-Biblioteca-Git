@@ -1,4 +1,7 @@
+
 package App;
+
+
 
 public class Client extends Person {
 
@@ -7,6 +10,7 @@ public class Client extends Person {
     public Client() {
         super(null, null, null);
     }
+
 
     public Client(String id, String name, String phone, String email) {
         super(id, name, phone);
@@ -25,5 +29,7 @@ public class Client extends Person {
     public String toString() {
         return "Client{" + "email=" + email + '}';
     }
+
+    
 
 }
