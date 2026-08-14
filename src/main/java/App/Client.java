@@ -6,7 +6,9 @@ public class Client extends Person {
     private String email;
 
     public Client() {
+        super(null, null, null);
     }
+
 
     public Client(String id, String name, String phone, String email) {
         super(id, name, phone);
