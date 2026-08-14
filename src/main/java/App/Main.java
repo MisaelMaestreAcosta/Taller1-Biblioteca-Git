@@ -112,4 +112,19 @@ public class Main {
         System.out.println("Client with ID " + id + " not found");
     }
 
+    public static void deleteClient() {
+        System.out.print("Enter client ID to delete: ");
+        String id = sc.nextLine();
+
+        for (Client client : clients) {
+            if (client.getId().equals(id)) {
+                clients.remove(client);
+                System.out.println("Client with ID " + id + " deleted successfully");
+                return;
+            }
+        }
+
+        System.out.println("Client with ID " + id + " not found");
+    }
+
 }
