@@ -62,4 +62,19 @@ public class Main {
         }
     }
 
+    public static void findClient() {
+        System.out.print("Enter client ID to search: ");
+        String id = sc.nextLine();
+
+        for (Client client : clients) {
+            if (client.getId().equals(id)) {
+                System.out.println("Client found:");
+                System.out.println(client);
+                return;
+            }
+        }
+
+        System.out.println("Client with ID " + id + " not found");
+    }
+
 }
