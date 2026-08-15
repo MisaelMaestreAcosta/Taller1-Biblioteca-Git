@@ -287,4 +287,27 @@ public class Main {
         System.out.println("Status: " + loan.getStatus());
     }
 
+    public static void returnLoan() {
+        System.out.print("Enter loan ID: ");
+        String loanId = sc.nextLine();
+
+        for (Loan loan : loans) {
+            if (loan.getLoanId().equals(loanId)) {
+                if (!loan.getStatus().equals("Active")) {
+                    System.out.println("This loan is already returned");
+                    return;
+                }
+
+                loan.returnBook();
+                System.out.println("Book returned successfully");
+                System.out.println("Loan ID: " + loanId);
+                System.out.println("Return date: " + loan.getDate());
+                System.out.println("Status: " + loan.getStatus());
+                return;
+            }
+        }
+
+        System.out.println("Loan with ID " + loanId + " not found");
+    }
+
 }
