@@ -1,17 +1,12 @@
-
-
-
 package App;
-
-
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -131,6 +126,34 @@ public class Main {
         }
 
         System.out.println("Client with ID " + id + " not found");
+    }
+
+    public static void createBook() {
+        System.out.print("Enter book code: ");
+        String code = sc.nextLine();
+
+        System.out.print("Enter book title: ");
+        String title = sc.nextLine();
+
+        System.out.print("Enter book year published: ");
+        String yearPublished = sc.nextLine();
+
+        System.out.print("Enter book author: ");
+        String author = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                System.out.println("Book with code " + code + " already exists");
+                return;
+            }
+        }
+
+        Book newBook = new Book(code, title, yearPublished, author, true);
+        books.add(newBook);
+
+        System.out.println("Book created successfully");
+        System.out.println("Code: " + code);
+        System.out.println("Title: " + title);
     }
 
 }
