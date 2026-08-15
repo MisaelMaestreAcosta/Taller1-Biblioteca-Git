@@ -156,4 +156,16 @@ public class Main {
         System.out.println("Title: " + title);
     }
 
+    public static void listBooks() {
+        if (books.isEmpty()) {
+            System.out.println("No books registered");
+            return;
+        }
+
+        System.out.println("\n BOOKS LIST");
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
+
 }
