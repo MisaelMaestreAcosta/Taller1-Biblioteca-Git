@@ -1,16 +1,12 @@
-
-
-
 package App;
-
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -130,6 +126,112 @@ public class Main {
         }
 
         System.out.println("Client with ID " + id + " not found");
+    }
+
+    public static void createBook() {
+        System.out.print("Enter book code: ");
+        String code = sc.nextLine();
+
+        System.out.print("Enter book title: ");
+        String title = sc.nextLine();
+
+        System.out.print("Enter book year published: ");
+        String yearPublished = sc.nextLine();
+
+        System.out.print("Enter book author: ");
+        String author = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                System.out.println("Book with code " + code + " already exists");
+                return;
+            }
+        }
+
+        Book newBook = new Book(code, title, yearPublished, author, true);
+        books.add(newBook);
+
+        System.out.println("Book created successfully");
+        System.out.println("Code: " + code);
+        System.out.println("Title: " + title);
+    }
+
+    public static void listBooks() {
+        if (books.isEmpty()) {
+            System.out.println("No books registered");
+            return;
+        }
+
+        System.out.println("\n "
+                + "BOOKS LIST");
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
+
+    public static void findBook() {
+        System.out.print("Enter book code to search: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                System.out.println("Book found:");
+                System.out.println(book);
+                return;
+            }
+        }
+
+        System.out.println("Book with code " + code + " not found");
+    }
+
+    public static void updateBook() {
+        System.out.print("Enter book code to update: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                System.out.println("Current data: " + book);
+
+                System.out.print("Enter new title (press Enter to keep current): ");
+                String title = sc.nextLine();
+                if (!title.isEmpty()) {
+                    book.setTitle(title);
+                }
+
+                System.out.print("Enter new author (press Enter to keep current): ");
+                String author = sc.nextLine();
+                if (!author.isEmpty()) {
+                    book.setAuthor(author);
+                }
+
+                System.out.print("Enter new year (press Enter to keep current): ");
+                String year = sc.nextLine();
+                if (!year.isEmpty()) {
+                    book.setYearPublished(year);
+                }
+
+                System.out.println("Book updated successfully");
+                System.out.println("Updated data: " + book);
+                return;
+            }
+        }
+
+        System.out.println("Book with code " + code + " not found");
+    }
+
+    public static void deleteBook() {
+        System.out.print("Enter book code to delete: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                books.remove(book);
+                System.out.println("Book with code " + code + " deleted successfully");
+                return;
+            }
+        }
+
+        System.out.println("Book with code " + code + " not found");
     }
 
 }

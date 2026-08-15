@@ -2,7 +2,9 @@
 package App;
 
 
+
 public class Client extends Person {
+
     private String email;
 
     public Client() {
@@ -27,9 +29,7 @@ public class Client extends Person {
     public String toString() {
         return "Client{" + "email=" + email + '}';
     }
-    
+
     
 
-   
-    
 }
