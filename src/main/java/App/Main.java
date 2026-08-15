@@ -184,4 +184,39 @@ public class Main {
         System.out.println("Book with code " + code + " not found");
     }
 
+    public static void updateBook() {
+        System.out.print("Enter book code to update: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                System.out.println("Current data: " + book);
+
+                System.out.print("Enter new title (press Enter to keep current): ");
+                String title = sc.nextLine();
+                if (!title.isEmpty()) {
+                    book.setTitle(title);
+                }
+
+                System.out.print("Enter new author (press Enter to keep current): ");
+                String author = sc.nextLine();
+                if (!author.isEmpty()) {
+                    book.setAuthor(author);
+                }
+
+                System.out.print("Enter new year (press Enter to keep current): ");
+                String year = sc.nextLine();
+                if (!year.isEmpty()) {
+                    book.setYearPublished(year);
+                }
+
+                System.out.println("Book updated successfully");
+                System.out.println("Updated data: " + book);
+                return;
+            }
+        }
+
+        System.out.println("Book with code " + code + " not found");
+    }
+
 }
