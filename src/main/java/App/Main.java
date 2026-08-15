@@ -310,4 +310,20 @@ public class Main {
         System.out.println("Loan with ID " + loanId + " not found");
     }
 
+    public static void listActiveLoans() {
+        boolean found = false;
+
+        System.out.println("\n ACTIVE LOANS ");
+        for (Loan loan : loans) {
+            if (loan.getStatus().equals("Active")) {
+                System.out.println(loan);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No active loans");
+        }
+    }
+
 }
