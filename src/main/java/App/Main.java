@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
@@ -232,6 +233,97 @@ public class Main {
         }
 
         System.out.println("Book with code " + code + " not found");
+    }
+
+    public static void registerLoan() {
+        System.out.print("Enter loan ID: ");
+        String loanId = sc.nextLine();
+
+        System.out.print("Enter client ID: ");
+        String clientId = sc.nextLine();
+
+        Client client = null;
+        for (Client c : clients) {
+            if (c.getId().equals(clientId)) {
+                client = c;
+                break;
+            }
+        }
+
+        if (client == null) {
+            System.out.println("Client with ID " + clientId + " not found");
+            return;
+        }
+
+        System.out.print("Enter book code: ");
+        String bookCode = sc.nextLine();
+
+        Book book = null;
+        for (Book b : books) {
+            if (b.getCode().equals(bookCode)) {
+                book = b;
+                break;
+            }
+        }
+
+        if (book == null) {
+            System.out.println("Book with code " + bookCode + " not found");
+            return;
+        }
+
+        if (!book.isAvailable()) {
+            System.out.println("Book is not available for loan");
+            return;
+        }
+
+        Loan loan = new Loan(loanId, client, book);
+        loans.add(loan);
+
+        System.out.println("Loan registered successfully");
+        System.out.println("Loan ID: " + loanId);
+        System.out.println("Client: " + client.getName());
+        System.out.println("Book: " + book.getTitle());
+        System.out.println("Date: " + loan.getDate());
+        System.out.println("Status: " + loan.getStatus());
+    }
+
+    public static void returnLoan() {
+        System.out.print("Enter loan ID: ");
+        String loanId = sc.nextLine();
+
+        for (Loan loan : loans) {
+            if (loan.getLoanId().equals(loanId)) {
+                if (!loan.getStatus().equals("Active")) {
+                    System.out.println("This loan is already returned");
+                    return;
+                }
+
+                loan.returnBook();
+                System.out.println("Book returned successfully");
+                System.out.println("Loan ID: " + loanId);
+                System.out.println("Return date: " + loan.getDate());
+                System.out.println("Status: " + loan.getStatus());
+                return;
+            }
+        }
+
+        System.out.println("Loan with ID " + loanId + " not found");
+    }
+
+    public static void listActiveLoans() {
+        boolean found = false;
+
+        System.out.println("\n ACTIVE LOANS ");
+        for (Loan loan : loans) {
+            if (loan.getStatus().equals("Active")) {
+                System.out.println(loan);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No active loans");
+        }
     }
 
 }
