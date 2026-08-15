@@ -219,4 +219,19 @@ public class Main {
         System.out.println("Book with code " + code + " not found");
     }
 
+    public static void deleteBook() {
+        System.out.print("Enter book code to delete: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                books.remove(book);
+                System.out.println("Book with code " + code + " deleted successfully");
+                return;
+            }
+        }
+
+        System.out.println("Book with code " + code + " not found");
+    }
+
 }
