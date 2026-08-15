@@ -162,10 +162,26 @@ public class Main {
             return;
         }
 
-        System.out.println("\n BOOKS LIST");
+        System.out.println("\n "
+                + "BOOKS LIST");
         for (Book book : books) {
             System.out.println(book);
         }
+    }
+
+    public static void findBook() {
+        System.out.print("Enter book code to search: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equals(code)) {
+                System.out.println("Book found:");
+                System.out.println(book);
+                return;
+            }
+        }
+
+        System.out.println("Book with code " + code + " not found");
     }
 
 }
